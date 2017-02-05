@@ -1,8 +1,12 @@
 :root {
+  --mainColor: rebeccapurple;
+}
+
+.app {
   font-family: helvetica, arial, sans-serif;
   font-size: 125%;
 }
 
-.app {
-  color: #333;
+.heading1 {
+  color: var(--mainColor);
 }

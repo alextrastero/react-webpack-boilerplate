@@ -47,7 +47,7 @@ module.exports = {
       {
         test: /\.js$/,
         use: [
-          'babel-loader'
+          'babel'
         ],
         exclude: /node_modules/
       },
@@ -55,7 +55,18 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style',
-          'css?modules'
+          'css?modules&importLoaders=1',
+          {
+            loader: 'postcss',
+            options: {
+              plugins: function () {
+                return [
+                  require('postcss-cssnext'),
+                  require('postcss-nested')
+                ]
+              }
+            }
+          }
         ]
       }
     ]

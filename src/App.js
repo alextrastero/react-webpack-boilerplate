@@ -3,7 +3,7 @@ import styles from './App.css'
 
 const App = () => (
   <div className={styles.app}>
-    <p>Hello Webpack 2</p>
+    <h1 className={styles.heading1}>Hello Webpack2</h1>
   </div>
 )
 
