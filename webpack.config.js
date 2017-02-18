@@ -1,5 +1,6 @@
 const { resolve } = require('path')
 const webpack = require('webpack')
+const DashboardPlugin = require('webpack-dashboard/plugin')
 
 module.exports = {
   entry: [
@@ -73,10 +74,13 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     // enable HMR globally
+    new webpack.HotModuleReplacementPlugin(),
 
-    new webpack.NamedModulesPlugin()
     // prints more readable module names in the browser console on HMR updates
+    new webpack.NamedModulesPlugin(),
+
+    // start webpack dashboard
+    new DashboardPlugin({ port: 3001 })
   ]
 }
