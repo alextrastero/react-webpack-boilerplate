@@ -2,7 +2,13 @@
   "name": "react-webpack-boilerplate",
   "scripts": {
     "build": "webpack",
+<<<<<<< HEAD
     "start": "webpack-dev-server"
+=======
+    "start": "webpack-dashboard -p 3001 webpack-dev-server",
+    "update": "npm run create && cp -R ../react-materialize/src/* src/react-materialize/",
+    "create": "test -d 'src/react-materialize' || mkdir -p 'src/react-materialize'"
+>>>>>>> Add update script to package
   },
   "version": "1.0.0",
   "description": "React Webpack boilerplate",
