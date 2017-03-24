@@ -48,17 +48,17 @@ module.exports = {
       {
         test: /\.js$/,
         use: [
-          'babel'
+          'babel-loader'
         ],
         exclude: /node_modules/
       },
       {
         test: /\.css$/,
         use: [
-          'style',
-          'css?modules&importLoaders=1',
+          'style-loader',
+          'css-loader?modules&importLoaders=1',
           {
-            loader: 'postcss',
+            loader: 'postcss-loader',
             options: {
               plugins: function () {
                 return [
