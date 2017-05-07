@@ -1,9 +1,9 @@
 import React from 'react'
-import styles from './App.css'
+import { Button } from './react-materialize';
 
 const App = () => (
-  <div className={styles.app}>
-    <h1 className={styles.heading1}>Hello Webpack2</h1>
+  <div>
+    <Button>Hi</Button>
   </div>
 )
 
