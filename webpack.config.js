@@ -1,13 +1,14 @@
 const { resolve } = require('path')
 const webpack = require('webpack')
-const DashboardPlugin = require('webpack-dashboard/plugin')
+
+const PORT = 3000;
 
 module.exports = {
   entry: [
     'react-hot-loader/patch',
     // activate HMR for React
 
-    'webpack-dev-server/client?http://localhost:8080',
+    `webpack-dev-server/client?http://localhost:${PORT}`,
     // bundle the client for webpack-dev-server
     // and connect to the provided endpoint
 
@@ -39,8 +40,11 @@ module.exports = {
     contentBase: resolve(__dirname, 'dist'),
     // match the output path
 
-    publicPath: '/'
+    publicPath: '/',
     // match the output `publicPath`
+
+    port: PORT
+    // dev server PORT
   },
 
   module: {
@@ -78,9 +82,6 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
 
     // prints more readable module names in the browser console on HMR updates
-    new webpack.NamedModulesPlugin(),
-
-    // start webpack dashboard
-    new DashboardPlugin({ port: 3001 })
+    new webpack.NamedModulesPlugin()
   ]
 }
