@@ -12,8 +12,10 @@ class Modal extends Component {
   }
 
   componentDidMount () {
-    if (!this.props.trigger) {
-      $(`#${this.modalID}`).modal(this.props.modalOptions);
+    const { trigger, modalOptions } = this.props;
+
+    if (!trigger) {
+      $(`#${this.modalID}`).modal(modalOptions);
     }
   }
 
