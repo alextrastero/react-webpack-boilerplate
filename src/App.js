@@ -1,11 +1,12 @@
 import React from 'react';
-import Tag from './react-materialize/Tag';
 import Icon from './react-materialize/Icon';
+import Button from './react-materialize/Button';
 
 const App = () => {
   return (
     <div>
-      <Tag>pepe</Tag>
+      <Icon>cloud</Icon>
+      <Button waves='light'>button<Icon left>cloud</Icon></Button>
     </div>
   )
 };
