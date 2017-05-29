@@ -25,13 +25,15 @@ module.exports = {
 
     path: resolve(__dirname, 'dist'),
 
+    sourceMapFilename: 'bundle.js.map',
+
     publicPath: '/'
     // necessary for HMR to know where to load the hot update chunks
   },
 
   context: resolve(__dirname, 'src'),
 
-  devtool: 'eval',
+  devtool: 'cheap-source-map',
 
   devServer: {
     hot: true,

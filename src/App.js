@@ -1,25 +1,16 @@
 import React from 'react';
-import { Modal } from './react-materialize';
+import Autocomplete from './react-materialize/Autocomplete';
 
-class App extends React.Component {
-  constructor () {
-    super()
-    this.showModal = this.showModal.bind(this);
-    this.id = 'yo'
+const App = () => {
+  const data = {
+    one: null,
+    two: null
   }
-
-  showModal () {
-    $(`#${this.id}`).modal('open');
-  }
-
-  render () {
-    return (
-      <div>
-        <a onClick={this.showModal}>Show Modal</a>
-        <Modal id={this.id} modalOptions={ { dismissible: true, inDuration: 30 } }><p>sup</p></Modal>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <Autocomplete data={data} />
+    </div>
+  )
 };
 
 export default App;
