@@ -1,13 +1,20 @@
 import React from 'react';
-import Icon from './react-materialize/Icon';
-import Button from './react-materialize/Button';
+import Collapsible from './react-materialize/Collapsible';
+import CollapsibleItem from './react-materialize/CollapsibleItem';
 
 const App = () => {
   return (
-    <div>
-      <Icon>cloud</Icon>
-      <Button waves='light'>button<Icon left>cloud</Icon></Button>
-    </div>
+<Collapsible>
+  <CollapsibleItem header='First' icon='filter_drama'>
+    Lorem ipsum dolor sit amet.
+  </CollapsibleItem>
+  <CollapsibleItem header='Second' icon='place'>
+    Lorem ipsum dolor sit amet.
+  </CollapsibleItem>
+  <CollapsibleItem header='Third' icon='whatshot'>
+    Lorem ipsum dolor sit amet.
+  </CollapsibleItem>
+</Collapsible>
   )
 };
 
