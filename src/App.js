@@ -1,20 +1,12 @@
 import React from 'react';
-import Collapsible from './react-materialize/Collapsible';
-import CollapsibleItem from './react-materialize/CollapsibleItem';
+import Input from './react-materialize/Input';
 
 const App = () => {
+  const label = 'I am a label';
+  const value = 2;
+
   return (
-<Collapsible>
-  <CollapsibleItem header='First' icon='filter_drama'>
-    Lorem ipsum dolor sit amet.
-  </CollapsibleItem>
-  <CollapsibleItem header='Second' icon='place'>
-    Lorem ipsum dolor sit amet.
-  </CollapsibleItem>
-  <CollapsibleItem header='Third' icon='whatshot'>
-    Lorem ipsum dolor sit amet.
-  </CollapsibleItem>
-</Collapsible>
+    <Input type='number' label={label} defaultValue={value} />
   )
 };
 
