@@ -33,7 +33,7 @@ module.exports = {
 
   context: resolve(__dirname, 'src'),
 
-  devtool: 'cheap-source-map',
+  devtool: 'eval',
 
   devServer: {
     hot: true,
