@@ -5,13 +5,11 @@ import cx from 'classnames';
 class Collapsible extends Component {
   constructor (props) {
     super(props);
-
-    this.state = {
-      activeKey: props.defaultActiveKey || ''
-    };
-
     this.renderItem = this.renderItem.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
+    this.state = {
+      activeKey: this.props.defaultActiveKey
+    };
   }
 
   render () {
@@ -38,17 +36,16 @@ class Collapsible extends Component {
     );
   }
 
-  renderItem (child, key) {
+  renderItem (child) {
     if (!child) return null;
-    const eventKey = `key${key}`;
 
     const props = {};
 
     if (this.props.accordion) {
-      props.expanded = this.state.activeKey === eventKey;
+      props.expanded = child.props.eventKey === this.state.activeKey;
       props.onSelect = this.handleSelect;
-      props.eventKey = eventKey;
     }
+    delete props.expanded;
 
     return React.cloneElement(child, props);
   }

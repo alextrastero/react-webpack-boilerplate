@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import Icon from './Icon';
 
 class CollapsibleItem extends Component {
   constructor (props) {
     super(props);
+    this.state = {
+      expanded: props.expanded
+    };
 
     this.handleClick = this.handleClick.bind(this);
     this.renderBody = this.renderBody.bind(this);
     this.renderIcon = this.renderIcon.bind(this);
+  }
+
+  componentDidUpdate () {
+    const { scroll, expanded } = this.props;
+
+    if (expanded) {
+      ReactDOM.findDOMNode(this).scrollIntoView({ behavior: scroll });
+    }
   }
 
   render () {
@@ -18,10 +30,11 @@ class CollapsibleItem extends Component {
       header,
       icon,
       iconClassName,
-      expanded,
       className,
       ...props
     } = this.props;
+
+    const { expanded } = this.state;
 
     delete props.expanded;
     delete props.eventKey;
@@ -41,7 +54,7 @@ class CollapsibleItem extends Component {
           {icon && this.renderIcon(icon, iconClassName)}
           {header}
         </C>
-        {this.renderBody()}
+        {expanded && this.renderBody()}
       </li>
     );
   }
@@ -51,12 +64,14 @@ class CollapsibleItem extends Component {
 
     if (onSelect) {
       onSelect(eventKey);
+    } else {
+      this.setState({ expanded: !this.state.expanded });
     }
   }
 
   renderBody () {
     return (
-      <div className='collapsible-body'>
+      <div className='collapsible-body' style={{ display: 'block' }}>
         {this.props.children}
       </div>
     );
