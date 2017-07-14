@@ -1,11 +1,13 @@
 import React from 'react';
-import { Navbar } from './react-materialize';
+import { Input } from './react-materialize';
 
 class App extends React.Component {
   render () {
     return (
-      <Navbar className='light-blue darken-4'>
-      </Navbar>
+      <form>
+        <Input required />
+        <button type='submit'>send</button>
+      </form>
     );
   }
 }
