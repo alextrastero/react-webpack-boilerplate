@@ -48,33 +48,13 @@ module.exports = {
   },
 
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        use: [
-          'babel-loader'
-        ],
-        exclude: /node_modules/
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader?modules&importLoaders=1',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: function () {
-                return [
-                  require('postcss-cssnext'),
-                  require('postcss-nested')
-                ]
-              }
-            }
-          }
-        ]
-      }
-    ]
+    rules: [{
+      test: /\.js$/,
+      use: [
+        'babel-loader'
+      ],
+      exclude: /node_modules/
+    }]
   },
 
   plugins: [
