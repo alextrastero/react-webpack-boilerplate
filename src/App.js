@@ -1,12 +1,12 @@
 import React from 'react';
-import { Input } from './react-materialize';
+import { Input, Button } from './react-materialize';
 
 class App extends React.Component {
   render () {
     return (
       <form>
         <Input required />
-        <button type='submit'>send</button>
+        <Button type='submit'>send</Button>
       </form>
     );
   }
