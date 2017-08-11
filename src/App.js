@@ -1,13 +1,17 @@
 import React from 'react';
-import { Input, Button } from './react-materialize';
+import { Collapsible, CollapsibleItem } from './react-materialize';
+
+const Foo = ({ children, ...other }) => (
+  <CollapsibleItem header='john' {...other}>{children}</CollapsibleItem>
+);
 
 class App extends React.Component {
   render () {
     return (
-      <form>
-        <Input required />
-        <Button type='submit'>send</Button>
-      </form>
+      <Collapsible accordion defaultActiveKey={0}>
+        <Foo>john</Foo>
+        <Foo>jose</Foo>
+      </Collapsible>
     );
   }
 }
