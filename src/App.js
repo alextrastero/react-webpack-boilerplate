@@ -1,15 +1,18 @@
 import React from 'react';
-import { NavItem, Navbar, Icon, Button } from './react-materialize';
+import { Navbar, Col, Row, NavItem } from './react-materialize';
 
 class App extends React.Component {
   render () {
     return (
-      <Navbar className='container'>
-        <NavItem key='foo'>
-          <Icon>home</Icon>
-          Home
-        </NavItem>
-      </Navbar>
+      <Row className='red lighten-2'>
+        <Col s={12}>
+          <Navbar>
+            <NavItem key='foo'>
+              Home
+            </NavItem>
+          </Navbar>
+        </Col>
+      </Row>
     );
   }
 }
