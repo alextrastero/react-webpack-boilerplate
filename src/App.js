@@ -1,18 +1,15 @@
 import React from 'react';
-import { Card, CardTitle, Col, Row } from './react-materialize';
+import { Tabs, Tab } from './react-materialize';
 
 class App extends React.Component {
   render () {
     return (
-      <Row>
-        <Col s={4}>
-          <Card header={<CardTitle reveal image={'https://placeimg.com/100/100/any'} waves='light' />}
-            title='Card Title'
-            reveal={<p>Here is some more information about this product that is only revealed once clicked on.</p>}>
-            <p><a href='#'>This is a link</a></p>
-          </Card>
-        </Col>
-      </Row>
+      <Tabs className='tab-demo z-depth-1'>
+        <Tab title='Test 1'>Test 1</Tab>
+        <Tab title='Test 2' active>Test 2</Tab>
+        <Tab title='Test 3'>Test 3</Tab>
+        <Tab title='Test 4'>Test 4</Tab>
+      </Tabs>
     );
   }
 }
