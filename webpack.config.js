@@ -1,11 +1,11 @@
-const { resolve } = require('path')
-const webpack = require('webpack')
+const { resolve } = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const merge = require('webpack-merge')
+const merge = require('webpack-merge');
 
 const PORT = 3000;
 
-const targetEnv = process.env.npm_lifecycle_event === 'build' ? 'production' : 'development'
+const targetEnv = process.env.npm_lifecycle_event === 'build' ? 'production' : 'development';
 
 const config = {
   entry: './index.js',
@@ -43,7 +43,7 @@ const config = {
     // prints more readable module names in the browser console on HMR updates
     new webpack.NamedModulesPlugin()
   ]
-}
+};
 
 if (targetEnv === 'development') {
   module.exports = merge(config, {
@@ -68,8 +68,8 @@ if (targetEnv === 'development') {
       publicPath: '/',
       port: PORT
     },
-    devtool: 'eval-source-map',
-  })
+    devtool: 'eval-source-map'
+  });
 }
 
 if (targetEnv === 'production') {
@@ -81,5 +81,5 @@ if (targetEnv === 'production') {
         }
       })
     ]
-  })
+  });
 }
