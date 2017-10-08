@@ -1,7 +1,7 @@
 ## React Webpack Boilerplate
 ### Includes:
  - webpack2
- - ES6 stage-2
+ - ES6
  - react-hot-loader
 
 ### Usage
