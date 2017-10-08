@@ -21,7 +21,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0"
+    "react": "^16.x",
+    "react-dom": "^16.x"
   }
 }
