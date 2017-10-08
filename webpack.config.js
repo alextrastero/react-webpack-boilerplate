@@ -23,7 +23,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: '../dist/index.html'
+      template: 'index.ejs'
     }),
     // enable HMR globally
     new webpack.HotModuleReplacementPlugin(),
