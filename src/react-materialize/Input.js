@@ -10,7 +10,8 @@ class Input extends Component {
     super(props);
 
     this.state = {
-      value: props.value || props.defaultValue
+      value: props.value || props.defaultValue,
+      checked: !!props.checked
     };
 
     this._onChange = this._onChange.bind(this);
@@ -26,6 +27,10 @@ class Input extends Component {
     if (this.isDatePicker) {
       $(this.dateInput).pickadate(this.props.options);
       $(this.dateInput).on('change', this._onChange);
+    }
+    if (this.isTimePicker) {
+      $(this.timeInput).pickatime(this.props.options);
+      $(this.timeInput).on('change', this._onChange);
     }
   }
 
@@ -61,13 +66,16 @@ class Input extends Component {
     const { onChange } = this.props;
     var types = {
       'checkbox': e.target.checked,
+      'radio': e.target.checked,
       'select-multiple': this.getMultipleValues(e.target),
       'default': e.target.value
     };
-    const value = types[e.target.type] || types['default'];
+    const value = types.hasOwnProperty(e.target.type)
+      ? types[e.target.type]
+      : types['default'];
     if (onChange) { onChange(e, value); }
 
-    this.setState({ value });
+    this.setState({ value, checked: e.target.checked });
   }
 
   render () {
@@ -176,6 +184,24 @@ class Input extends Component {
           {htmlLabel}
         </div>
       );
+    } else if (type === 'time') {
+      this.isTimePicker = true;
+      delete other.options;
+
+      return (
+        <div className={cx(classes)}>
+          { this.renderIcon() }
+          <C
+            {...other}
+            className={cx(className, inputClasses)}
+            defaultValue={defaultValue}
+            id={this._id}
+            ref={(ref) => (this.timeInput = ref)}
+            placeholder={placeholder}
+          />
+          {htmlLabel}
+        </div>
+      );
     } else if (type === 'switch') {
       return (
         <div className='switch'>
@@ -196,12 +222,32 @@ class Input extends Component {
         ? this.state.value
         : defaultValue;
 
+      if (inputType === 'checkbox' || inputType === 'radio') {
+        return (
+          <div className={cx(classes)}>
+            { this.renderIcon() }
+            <C
+              {...other}
+              className={cx(className, inputClasses)}
+              ref={(ref) => (this.input = ref)}
+              id={this._id}
+              checked={this.state.checked}
+              onChange={this._onChange}
+              placeholder={placeholder}
+              type={inputType}
+            />
+            {htmlLabel}
+          </div>
+        );
+      }
+
       return (
         <div className={cx(classes)}>
           { this.renderIcon() }
           <C
             {...other}
             className={cx(className, inputClasses)}
+            ref={(ref) => (this.input = ref)}
             defaultValue={defaultValue}
             id={this._id}
             onChange={this._onChange}
@@ -220,7 +266,7 @@ class Input extends Component {
       return <Icon className='prefix'>{icon}</Icon>;
     } else {
       let icon = null;
-      if (React.Children.count(children) === 1) {
+      if (React.Children.count(children) === 1 && !Array.isArray(children)) {
         icon = React.Children.only(children);
       }
       return icon === null ? null : React.cloneElement(icon, {className: 'prefix'});
@@ -259,6 +305,7 @@ Input.propTypes = {
   validate: PropTypes.bool,
   multiple: PropTypes.bool,
   browserDefault: PropTypes.bool,
+  checked: PropTypes.bool,
   onLabel: PropTypes.string,
   offLabel: PropTypes.string,
   onChange: PropTypes.func,
@@ -266,9 +313,9 @@ Input.propTypes = {
   /**
    * Value used to set a initial value
    */
-  value: PropTypes.string
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
 };
 
-Input.defaultProps = { type: 'text' };
+Input.defaultProps = { type: 'text', checked: false };
 
 export default Input;
